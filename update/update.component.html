@@ -1,0 +1,41 @@
+<title>Customer Update</title>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header">Update Customer Data</h5>
+                <div class="card-body">
+                    <form (ngSubmit)="updateCustomer()">
+                        <div class="form-group">
+                            <label for="txtName">Name:</label>
+                            <input type="text" id="txtName" name="txtName" [(ngModel)]="customer.name" class="form-control" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtLastName">Lastname:</label>
+                            <input type="text" id="txtLastName" name="txtLastName" [(ngModel)]="customer.lastname" class="form-control" placeholder="Enter lastname">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAge">Age:</label>
+                            <input type="number" id="txtAge" name="txtAge" [(ngModel)]="customer.age" class="form-control" placeholder="Enter age">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSubscriptionType">Subscription Type:</label>
+                            <input type="text" id="txtSubscriptionType" name="txtSubscriptionType" [(ngModel)]="customer.subscriptionType" class="form-control" placeholder="Enter subscription type">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNumber">Contact Number:</label>
+                            <input type="number" id="txtNumber" name="txtNumber" [(ngModel)]="customer.contactNumber" class="form-control" placeholder="Enter contact number">
+                        </div>
+                    </form>
+                    <div>
+                        <button type="submit" class="btn btn-success" (click)="updateCustomer()">Update</button>
+                        <button type="button" (click)="backToList()" class="btn btn-primary">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

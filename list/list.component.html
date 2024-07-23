@@ -1,0 +1,91 @@
+<title>Customer Database</title>
+
+<nav class="navbar bg-dark">
+    <div class="container">
+        <h2 class="text-white">Customer Database</h2>
+        <div class="d-flex">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div style="background-color: LightBlue" class="modal-header">
+                <h5 style="color: white;" class="modal-title" id="exampleModalLabel">Add New Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="customerform" (ngSubmit)="onSubmit()">
+                    <div class="form-group mb-2">
+                        <label for="txtName">Name:</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="txtLastName">Lastname:</label>
+                        <input type="text" class="form-control" formControlName="lastname" placeholder="Enter lastname">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="txtAge">Age:</label>
+                        <input type="number" class="form-control" formControlName="age" placeholder="Enter age">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="txtSubscriptionType">Subscription Type:</label>
+                        <input type="text" class="form-control" formControlName="subscriptionType" placeholder="Enter subscription type">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="txtNumber">Contact-Number:</label>
+                        <input type="number"  class="form-control" formControlName="contactNumber" placeholder="Enter contact-number">
+                    </div>
+                </form>
+            </div>
+            <div style="background-color: LightBlue" class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                <button (click) = " addCustomer(this.customerform.value)" [disabled] = "this.customerform.invalid" type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Age</th>
+                <th scope="col">Subscription Type</th>
+                <th scope="col">Contact-Number</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created On</th>
+                <th scope="col">Modified By</th>
+                <th scope="col">Modified On</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers; let i = index">
+                <th scope="row">{{ i + 1 }}</th> 
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.lastname}}</td>
+                <td>{{customer.age}}</td>
+                <td>{{customer.subscriptionType}}</td>
+                <td>{{customer.contactNumber }}</td>
+                <td>{{customer.createdBy}}</td>
+                <td>{{customer.createdOn | date: 'shortDate'}}</td>
+                <td>{{ customer.updatedBy }}</td>    <!-- Ensure this line is present -->
+                <td>{{ customer.updatedOn | date: 'shortDate' }}</td>  <!-- Ensure this line is present -->
+                <td>
+                    <button (click)="editCustomer(customer.id)" class="btn btn-warning">Edit</button>&nbsp;
+                    <button (click)="deleteCustomer(customer.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>  
+        </tbody>
+    </table>
+</div>
