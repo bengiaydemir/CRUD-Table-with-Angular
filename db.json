@@ -1,0 +1,10 @@
+{
+    "customer" : [
+        {
+            "id" : 1,
+            "name" : "bengi",
+            "product" : "computer",
+            "contactPhone": 1111
+        }
+    ]
+}
